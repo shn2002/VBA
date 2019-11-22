@@ -1,0 +1,28 @@
+Function fib1(number As Long) As Long
+Dim MyArray()
+ReDim MyArray(1 To number)
+MyArray(1) = 1
+MyArray(2) = 1
+Dim i As Long
+
+For i = 3 To number
+    MyArray(i) = MyArray(i - 1) + MyArray(i - 2)
+Next
+
+fib1 = MyArray(number)
+End Function
+
+Function fib2(number As Long) As Long
+If number = 1 Or number = 2 Then
+fib2 = 1
+Else
+fib2 = fib2(number - 1) + fib2(number - 2)
+End If
+End Function
+
+
+Sub test()
+
+Debug.Print fib1(30);
+
+Debug.Print fib2(30);
