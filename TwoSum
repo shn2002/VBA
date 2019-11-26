@@ -1,0 +1,54 @@
+Sub TwoSum()
+Dim myArray() As Long
+ReDim myArray(0 To 5)
+Dim i, j As Long
+Dim target As Long
+
+myArray(0) = 3
+myArray(1) = 5
+myArray(2) = 2
+myArray(3) = -4
+myArray(4) = 8
+myArray(5) = 11
+
+myArray = BubbleSort(myArray)
+
+i = 0
+j = UBound(myArray)
+target = 10
+Do While i < j
+    If myArray(i) + myArray(j) = target Then
+        Debug.Print myArray(i)
+        Debug.Print myArray(j)
+        Exit Sub
+    Else
+        If myArray(i) + myArray(j) > target Then
+            j = j - 1
+        Else
+            i = i + 1
+        End If
+    End If
+Loop
+End Sub
+
+
+Function BubbleSort(myArray() As Long)
+Dim flag As Boolean
+Dim i, j As Long
+Dim temp As Long
+j = 0
+flag = True
+Do While flag
+    flag = False
+    For i = 0 To UBound(myArray) - 1 - j
+        If myArray(i) > myArray(i + 1) Then
+            temp = myArray(i)
+            myArray(i) = myArray(i + 1)
+            myArray(i + 1) = temp
+        End If
+        flag = True
+    Next
+    j = j + 1
+Loop
+BubbleSort = myArray
+End Function
